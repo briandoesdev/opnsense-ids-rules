@@ -1,0 +1,11 @@
+# Kimi - DNS query
+alert dns any any -> any any (msg:"LOCAL AI Kimi DNS Query"; dns.query; dotprefix; content:".kimi.com"; nocase; endswith; classtype:policy-violation; sid:9000001; rev:1;)
+
+# Kimi - TLS SNI
+alert tls any any -> any any (msg:"LOCAL AI Kimi TLS SNI"; flow:established,to_server; tls.sni; dotprefix; content:".kimi.com"; nocase; endswith; classtype:policy-violation; sid:9000002; rev:1;)
+
+# DeepSeek - DNS query
+alert dns any any -> any any (msg:"LOCAL AI DeepSeek DNS Query"; dns.query; dotprefix; content:".deepseek.com"; nocase; endswith; classtype:policy-violation; sid:9000003; rev:1;)
+
+# DeepSeek - TLS SNI
+alert tls any any -> any any (msg:"LOCAL AI DeepSeek TLS SNI"; flow:established,to_server; tls.sni; dotprefix; content:".deepseek.com"; nocase; endswith; classtype:policy-violation; sid:9000004; rev:1;)
